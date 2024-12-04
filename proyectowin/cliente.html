@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Panel de Cliente - WIN</title>
+    <link rel="stylesheet" href="style.css?v=1.0">
+    <link rel="stylesheet" href="cliente.css?v=1.0">
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="https://win.pe/img/logo-oct-white.png" alt="WIN" class="header-logo">
+        </a>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='index.html'" class="back-button">
+                Volver a la Tienda
+            </button>
+            <div class="user-menu">
+                <img src="https://i.pinimg.com/736x/46/3d/23/463d2393c21efdb1d2e67b8b1bc8eec9.jpg" alt="Usuario" class="user-icon" onclick="toggleUser()">
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <a href="#" id="btnCerrarSesion">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Panel de navegación lateral -->
+        <div class="sidebar">
+            <div class="user-info">
+                <img src="https://i.pinimg.com/736x/46/3d/23/463d2393c21efdb1d2e67b8b1bc8eec9.jpg" alt="Usuario" class="profile-image">
+                <h3 id="userName">Nombre del Cliente</h3>
+                <p id="userEmail">sergioc@gmail.com</p>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-item active" data-section="perfil">
+                    Mi Perfil
+                </div>
+                <div class="nav-item" data-section="historial">
+                    Historial de Compras
+                </div>
+                <div class="nav-item" data-section="password">
+                    Cambiar Contraseña
+                </div>
+                <div class="nav-item" data-section="calificacion">
+                    Calificar Servicio
+                </div>
+            </nav>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="main-content">
+            <!-- Sección Mi Perfil -->
+            <section id="perfil" class="content-section active">
+                <div class="section-header">
+                    <h2>Mi Perfil</h2>
+                </div>
+                <div class="card">
+                    <div class="profile-container">
+                        <div class="profile-image-container">
+                            <img src="https://i.pinimg.com/736x/46/3d/23/463d2393c21efdb1d2e67b8b1bc8eec9.jpg" alt="Foto de perfil" id="profileImage" class="profile-image-large">
+                            <button type="button" class="btn-secondary" id="btnCambiarFoto">Cambiar foto</button>
+                            <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        </div>
+                        <div class="profile-details">
+                            <form id="perfilForm" onsubmit="actualizarPerfil(event)">
+                                <div class="form-group">
+                                    <label for="nombreUsuario">Nombre completo:</label>
+                                    <input type="text" id="nombreUsuario" required>
+                                    <span class="error-message" id="nombreError"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="emailUsuario">Email:</label>
+                                    <input type="email" id="emailUsuario" required>
+                                    <span class="error-message" id="emailError"></span>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="btn-primary">Guardar cambios</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Historial de Compras -->
+            <section id="historial" class="content-section">
+                <div class="section-header">
+                    <h2>Historial de Compras</h2>
+                    <div class="filters">
+                        <input type="date" id="dateFilter" class="filter-input">
+                        <select id="statusFilter" class="filter-input">
+                            <option value="">Todos los estados</option>
+                            <option value="completed">Completado</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="cancelled">Cancelado</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card">
+                    <div id="purchasesList" class="purchases-list">
+                        <table class="purchases-table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>N° Orden</th>
+                                    <th>Productos</th>
+                                    <th>Total</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="purchasesTableBody">
+                                <!-- Las compras se cargarán dinámicamente aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección Cambiar Contraseña -->
+            <section id="password" class="content-section">
+                <div class="section-header">
+                    <h2>Cambiar Contraseña</h2>
+                </div>
+                <div class="card">
+                    <form id="passwordForm" class="form">
+                        <div class="form-group">
+                            <label for="currentPassword">Contraseña Actual</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">Nueva Contraseña</label>
+                            <input type="password" id="newPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar Nueva Contraseña</label>
+                            <input type="password" id="confirmPassword" required>
+                        </div>
+                        <button type="submit" class="action-button">Actualizar Contraseña</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Sección Calificar Servicio -->
+            <section id="calificacion" class="content-section">
+                <div class="section-header">
+                    <h2>Calificar Servicio</h2>
+                </div>
+                <div class="rating-card">
+                    <h3>¿Qué te pareció nuestro servicio?</h3>
+                    <div class="rating-container">
+                        <div class="rating-stars">
+                            <span class="star" data-rating="1">★</span>
+                            <span class="star" data-rating="2">★</span>
+                            <span class="star" data-rating="3">★</span>
+                            <span class="star" data-rating="4">★</span>
+                            <span class="star" data-rating="5">★</span>
+                        </div>
+                        <p id="ratingText" class="rating-description">Selecciona tu calificación</p>
+                    </div>
+                    
+                    <button id="btnEnviarCalificacion" class="action-button">
+                        Enviar Calificación
+                    </button>
+
+                    <div id="confirmacionCalificacion" class="mensaje-confirmacion" style="display: none;">
+                        <p>¡Gracias! Tu calificación ha sido enviada correctamente.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="./cliente.js"></script>
+</body>
+</html> 

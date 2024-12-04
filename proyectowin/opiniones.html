@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opiniones de Clientes - WIN</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="opiniones.css">
+</head>
+<body>
+    <header>
+        <a href="/">
+            <img src="https://win.pe/img/logo-oct-white.png" alt="WIN" class="header-logo">
+        </a>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='index.html'" class="back-button">
+                Volver a la Tienda
+            </button>
+            <div class="user-menu">
+                <img src="https://i.pinimg.com/736x/46/3d/23/463d2393c21efdb1d2e67b8b1bc8eec9.jpg" alt="Usuario" class="user-icon" onclick="toggleUser()">
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <a href="cliente.html">Mi Perfil</a>
+                    <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="opinions-page">
+        <h1>Opiniones de Nuestros Clientes</h1>
+        
+        <div class="opinions-stats">
+            <div class="average-rating">
+                <h2>Calificación General</h2>
+                <div class="big-star">⭐</div>
+                <div id="averageScore">0.0</div>
+                <div id="totalReviews">0 opiniones</div>
+            </div>
+            
+            <div class="rating-bars">
+                <div class="rating-bar" data-rating="5">
+                    <span>5 ★</span>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+                <div class="rating-bar" data-rating="4">
+                    <span>4 ★</span>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+                <div class="rating-bar" data-rating="3">
+                    <span>3 ★</span>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+                <div class="rating-bar" data-rating="2">
+                    <span>2 ★</span>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+                <div class="rating-bar" data-rating="1">
+                    <span>1 ★</span>
+                    <div class="bar-container">
+                        <div class="bar"></div>
+                    </div>
+                    <span>0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-section">
+            <select id="ratingFilter" onchange="filtrarOpiniones()">
+                <option value="all">Todas las calificaciones</option>
+                <option value="5">5 estrellas</option>
+                <option value="4">4 estrellas</option>
+                <option value="3">3 estrellas</option>
+                <option value="2">2 estrellas</option>
+                <option value="1">1 estrella</option>
+            </select>
+            <select id="sortFilter" onchange="filtrarOpiniones()">
+                <option value="newest">Más recientes</option>
+                <option value="oldest">Más antiguas</option>
+                <option value="highest">Mayor calificación</option>
+                <option value="lowest">Menor calificación</option>
+            </select>
+        </div>
+
+        <div class="testimonials-container" id="testimonialsList">
+            <!-- Las calificaciones se cargarán dinámicamente aquí -->
+        </div>
+    </main>
+
+    <script src="funcionalidad.js"></script>
+    <script src="opiniones.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+Options -Indexes
+DirectoryIndex home.html index.html index.php
+
+RewriteEngine On
+RewriteBase /proyectowin/
+RewriteRule ^$ home.html [L]
+
+# Deshabilitar caché
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</IfModule>
+
+# Forzar recarga de CSS y JS
+<FilesMatch "\.(css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+</FilesMatch>

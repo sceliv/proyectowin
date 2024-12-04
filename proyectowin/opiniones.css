@@ -1,0 +1,86 @@
+/* Estilo para el botón de volver */
+.back-button {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 8px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+}
+
+.back-button:hover {
+    background-color: white;
+    color: #ff6b00;
+}
+
+/* Mejorar los estilos existentes */
+.opinions-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f5f5f5;
+}
+
+.opinions-stats {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.average-rating {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.big-star {
+    font-size: 4rem;
+    color: #ffd700;
+    margin: 1rem 0;
+}
+
+#averageScore {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+#totalReviews {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.rating-bars {
+    flex-grow: 1;
+    padding: 1rem 2rem;
+}
+
+.rating-bar {
+    margin: 1rem 0;
+}
+
+.bar-container {
+    height: 25px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0 1rem;
+}
+
+.bar {
+    background: #ffd700;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.filter-section {
+    margin: 2rem 0;
+    display: flex;
+} 

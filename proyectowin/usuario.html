@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Usuario - WIN</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="usuario.css">
+    
+    <!-- Agregar Font Awesome aquí -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="usuario.js"></script>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="https://win.pe/img/logo-oct-white.png" alt="WIN" class="header-logo">
+        </a>
+        <div class="user-menu">
+            <div class="user-info">
+                <span id="userName">admin</span>
+                <span id="userEmail" class="user-email">admin@gmail.com</span>
+            </div>
+            <img src="data:image/webp;base64,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" alt="Usuario" class="user-icon" onclick="toggleUser()">
+            <div class="user-dropdown" id="userDropdown" style="display: none;">
+                <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a href="#" onclick="mostrarSeccion('perfil')" class="active">Perfil</a></li>
+                <li><a href="#" onclick="mostrarSeccion('productos')">Gestión de Productos</a></li>
+                <li><a href="#" onclick="mostrarSeccion('catalogo')">Gestión de Catálogo</a></li>
+                <li><a href="#" onclick="mostrarSeccion('servicios')">Servicios/Clientes</a></li>
+            </ul>
+        </div>
+
+        <!-- Contenido del perfil -->
+        <div class="content" id="perfil">
+            <h1>Mi Perfil</h1>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img src="data:image/webp;base64,UklGRrAMAABXRUJQVlA4IKQMAACQRQCdASrhAOEAPoVAmkolI6WmpbOZ8NAQiWNu+F6oWKfMLKR4v7SqOnlHvz9yygHpPQ3nX9OW4j82/lkamPz83tNfs5Hqu9Z8/upe2H9941CBn7xMT5PUqLly0AP5R/afWc/2PNL+5f7DgS+TcS+Io/8v7Mpc7RKf56qdlI4LOVwnG7jauGG14njPaI2mizuHovK0xpaARn/KNWeGd1AjLmOHFzN1VdZgaBd+u7zKX4a0OkxmHk11VbLmnbYcMNsj0hsV6T1A5IElZ8tssTEJAGvY2rbPpIRyYUfRxUVrVzQA1jJSeBgwMO3VVB9pFJqEsbfbdShrUJbMlITs34gIGfCx87B+BADEVXUWbIzv9qYm/E2sDIi7zDWMWDMMWb+C/dK8JXScMhi4lNvIVIYL/TaJswQzTr8VbcIverrl9YyOSX1c1ItzEJHC1xZi1E5lnlSqEIU4ytLqZk4V+iwiA3IJAO0Yn48mnesLNIG/A6NWW8NUbtWq+yr0Id5K8fX7bWvnPFIrz3+9GQUlrbNUv1o+yH4OcOrpk4Rs+VKe6hIeDXTke33lOMI31qP92cfGN2iPNcpbBn6+XKLhADBwC4tnYIzIoKKy2t7ZiN8XSu14KyEl4uZ/rejoEw4yKx+ixJTqc3Q6KeRiqd3B/Gd9oJ+RBCmrboPaopwYaexc2TcD7QMKmwlq1h8PU8vvzqMoen/kGBOxLY6y11I6utkmpRh8RGZPqryxyIamLVww26qvJ9IgAP7+ucB9RrWwj7vKwB1FzBM82mhD5HCpGWewN4KO6EcqHDH+VKd//xpkj1nRvnNCu8Q0lbjfx3kj/g4w4YEmjHZCg2bU/UIe9ydeW0/hHtqhj3nCEsTwBmw8pf22yKqtUspk7vwzd355NW7i96QcOJYZrd99O5kGfb0ME5Wj2FCCNuAnp06MQeGiSYbycMHrkcQBNdzQ85w2REp/yh0O6pCWnapt4dGHLAo+Kw8BcFZlVD9xh2ypyDxKOpV1OgT+T9XOk77BCV4jU1dMxlMOwOw+YoPoeh848sWzVm/eXc4Uqlaa3iwgJbgakbwRQ9tK2M/lay482aCeeCW8pbn2ib7tEhgDTTlmFS4q2nzOvgM6xrBUZ2p4Ro0CfFgIw9OoJZYSneGCEk4xxO3p7AWL7wiJjjwBkDDFlXn6cMWFRS43WWNBGocw6FbprK5pKHFsdqn0nYKNDbG7Ge58PwKvzWgUhsh0WKNeXRDn6s5xfvDU4f4Wc7S2Wk3ReUfgysIO0pBBEdbyOyjAkhEI+x1dFo5GLzEsw7BLvSiOEKu4ZvGF14qV5QDK0lMC9XTqJp+/qb70auNN6CF25TP7uF0spET0Qvhz3tGFHEKHAGtix4mQCBH+gyVgvZPe1B3HwVwufF+UmgTmW3U0h6bWaPC6+G8bGPmRgkMpIacR10Mj01Wpry5F8Vh/JUCB93aH554rp9KUJ5Dj2+9HUuEF5ntie+ULxJPS2VdehRSRkpeD/QT0OvRYoRLHnm0Iymt7kgqkJtTMK/zbrxGEAZN4N3futVJVj89tz7DBdH7TwDFbwcoP9dtXpT3Q8XDVLKJWO/2PWofkw9SfOS049NcLBkuBkhiQN/vx+ut3UdeKCabaLr4jqM3DYjWoUavIeAMdzW3vSGZPRcstpf24m+STG5sIVvHg//EcKWT7yqoW0EgnBU/HJ/QdnHazjgIHNYdr2hKRwkZ8B/NrrCipNwMEFxwIDKIWOmzihkOuwtC6WbeEq83TQNrC3kF3moGzz43b9L1qOB53IuIK3+rv55reZd+C231Qd/gkyMe+DrPuM5+pHsZPlUk7RXiGXlqv00QzBWRpILrZYXoQa52aalh4sZkBTFPC5LTNo3cLDrDs+S9OvvcAw25rXS9FZOS4E0UZoPRRvXAFl/w4iWgEIYQM2gdes4svrBgSKswPhe9jZPZbnXtHaeZoYZeLdmN809IsrdcxXjF+v5WGfGh4JYhTy/DSHdymt/sYlAuhfkzltoy+iEDS9YasG+t9WAqQuJ6PujjaQRwIhiYOO6jx6bWd/Kh4z2BZHk0WWFIO+fUzqekCZWpT5Mr7qnC382NzJSnmrSENkV6v7W0a4E7qYaSCGXeZi0OvFJ0HUZzKEQ6TWvsmEV7RcG8pAkTOWnAJWT/lyxRnpNVbg/P6o03/8Sj9C/+Tu5mGAc6Jorrm+n3g+BsIja/aIB67pP8ujYCkn5517j+AEETHsdY7H1/nbFCSn/AW3SLlQ7rirk4QpWj/utpFpHkdLeQJlIAe72zPxtM4PIwIlB1XjDxfVEt3ha31mNhAzhqcFVZpzxhzHqfwq/7px4gpCtsM2jB2rV/QvKXcTkGuAmQdyUAhvEpEs2HOj6KsZnl+AtABxhPBjZUnA+Eah0+sQoASVibucwbqLY3BCEzcxg25OfgogH4M8GWulZYjurzcpcT6DNtTcxHU8VmFsUtTwsFlvajJEkqqig2OY906+5K9iqTaYEcg+t6fwodhOjVCm86Cp7YsRfmeaIVsrOCXiUSuKB1rjC1Nsttal0do8iRuLAAv/zb6wBmvAGmp8twEaUJBr5ZlVpHcN6sTOvjcOwWnXDFtcn/3bnIKl+MQH7T6+DJHa8klUWe1svx3ndbvCC5/IQFkpz/tMEC3zQCiDJKeeXmFxwLXf4ybr04qanf1Ba1ZnTiWjS3927YeR6tk5sL91pRmuAagrD9k6wnhracm/q3aq/9nUxmCkRQm7fYyZt2uDA4xKQbxwSZ+Wtg7PIZmwP45gD2Z65UTN5GQH0vnU/bhPS9TU+4jV2HzPALNcwS1zkqlLuSIJEJ8aQdDe3aEcHgHqGKOy7oVm+v7lMB/COkSydVfhRcUaiRMxOlE5UnIZa6a1dq+JSP1md05yQ1LiiITkEtJIJPnfkTE1Yrt8LRfBYrLU/1gMvrqB+CA35vc9RRbecaE+gJZ0cFQ/IupAtoh2K8aUf2VdAyoiQOZC6aro/eSb6zNQa9FakAA5PxPf6SviuLMybho6aicJ7DT6O1/Ae5iH1kK/1dcxrgBCfavcIowJeNb6ZGaf/dfIussqeFu9/aooiZKqxgMVS+dA0vB70rEkNRZNiufZAcSgtzE/o6E2u4eJ4yUxkUPGK8NZKy5IIU2sP5Q1PfC6u5+aRy1hclnumAge1i9i2BGeSTHnIFz3YuA84xfZwqgc3BswcARdtdjBt4iR+I/2fH8D4NI2zeHNmE5E9PLn1bo3LVtsf5YeQRueS37goSGjqC8MHmb/ynFQbXvgjlYOF2EG4Vek9OJTDRITdWlUs2tZvo1ZgTPg/cd1xaH78TNeM6MMmOzbkHSg0TQ2b8/VtqmvpiiPG9EGsthcbZnu92ezebolX5+34B4+rJ9T+syhonrVYxU76EAJ6KHaVBQOMABaS14wmODNl1bI3V9n6VMWHEBUTJhGLPx+PX9iyjR6Lp6n3xVbCgEYeXosaX7LTBF5rzGoB4kSROaU2+2OCAuryy6C8cKPcnryh3hQYh2UQBs1GRzNdAX/zGL2Vt51bl5c16VKUtHWgrEwrG+d5kCG+GBPlbhPUMlg099s5smzAf9WBFboGCOftHKUy2pm0RTJ1YKyeOOavB16Dj1YVD0Tn2XCT4I9WrQOm4kv15/7n2hAMqxHkcBqxBcS2Sh9gtxWSDT0+Bxe50wDoTzMWRcAJRhFqzMD5p8Jl+8dXsbSDYhosc6lf6vgLQVVLKAAOehtE9Lt9/t/XAncXLK+dx5TVEAmFgDe1q8gjgyfOPfOxPDm3QEQcQ1gyNYXOIaZ+TFWFqsk0w8aP4Y54P/S+aGzRh76Ig1gIuZVNhqU6qTqrj3M6oGeZKG3HJi620cVAxx7PHuRxHdsFl/vhSyG381t4N7vIM1Dlg3GnDC9vn4U2nDgBxwA2aP7aKSu5UhXaOrwnGATkEEwsdzwZ/D6KnJT/uCFdNw8niJrA0ZmkUCwXkjOw7XKAOpUOvpFBn1MRZvAvTbQwlxCLDXMmg66qREHVEsHsEc36LRBEMRSEe+6XSBxkH8UwOVCpW/COhgSfkpx80MrVT0r5j13Bbv+wvAVZ03ErrT6bkJUJuvL9udAAaKD/4EfCEECnSeReF1qNtcqCBJlmsZ6d3rYFW8Ef0cQ/OOGWAMkQ2FPdZaQRdZ4qWRHPbzrt9VKRJKQwaskyvwzGZ9H/FLpfYfYhbEstzhY4nt5NfhEgShwPEqhWMIVliDb50f3AWjtGELe8+daFIGJhBH0Zg44nNi2LZHajFH2iUv5YHMMnWqKQRGVSXu9StJb6XygAAAB3Eafnf6N4njpBRFTogAAAAAAA==" alt="Foto de perfil" id="profileImage">
+                    <button class="change-photo-btn" onclick="cambiarFoto()">Cambiar foto</button>
+                </div>
+                <div class="profile-details">
+                    <form id="perfilForm" onsubmit="actualizarPerfil(event)">
+                        <div class="form-group">
+                            <label>Nombre completo:</label>
+                            <input type="text" id="nombreUsuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="email" id="emailUsuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono:</label>
+                            <input type="tel" id="telefonoUsuario">
+                        </div>
+                        <div class="form-group">
+                            <label>Dirección:</label>
+                            <input type="text" id="direccionUsuario">
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn-primary">Guardar cambios</button>
+                            <button type="button" class="btn-secondary" onclick="cancelarEdicion()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para agregar/editar producto -->
+        <div class="modal-producto" id="modalProducto" style="display: none;">
+            <div class="modal-content-producto">
+                <div class="modal-header">
+                    <h2>Agregar Nuevo Producto</h2>
+                    <button class="close-modal" onclick="cerrarModalProducto()">&times;</button>
+                </div>
+                
+                <form class="producto-form" id="formProducto" onsubmit="guardarProducto(event)">
+                    <div class="form-group-producto">
+                        <label for="nombreProducto">Nombre del Producto</label>
+                        <input type="text" id="nombreProducto" required>
+                    </div>
+                    
+                    <div class="form-group-producto">
+                        <label for="descripcionProducto">Descripción</label>
+                        <textarea id="descripcionProducto" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="form-group-producto">
+                        <label for="precioProducto">Precio (S/.)</label>
+                        <input type="number" id="precioProducto" step="0.01" required>
+                    </div>
+                    
+                    <div class="form-group-producto">
+                        <label for="stockProducto">Stock</label>
+                        <input type="number" id="stockProducto" required>
+                    </div>
+
+                    <div class="form-group-producto">
+                        <label for="categoriaProducto">Categoría</label>
+                        <select id="categoriaProducto" required>
+                            <option value="">Seleccione una categoría</option>
+                            <option value="internet">Internet</option>
+                            <option value="telefonia">Telefonía</option>
+                            <option value="television">Televisión</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-producto">
+                        <label>Imagen del Producto</label>
+                        <div class="imagen-input-container">
+                            <div class="imagen-preview" id="imagenPreview">
+                                <img id="previewImg" src="" alt="" style="display: none; max-width: 100%; height: auto;">
+                                <span class="placeholder-text">Vista previa de imagen</span>
+                            </div>
+                            <div class="imagen-opciones">
+                                <input type="file" id="imagenFile" accept="image/*" onchange="previewImagen(event)" style="display: none;">
+                                <input type="text" id="imagenUrl" placeholder="O ingresa la URL de la imagen">
+                                <button type="button" class="btn btn-secondary" onclick="document.getElementById('imagenFile').click()">
+                                    <i class="fas fa-upload"></i> Subir Imagen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group-producto acciones-formulario">
+                        <button type="submit" class="btn btn-primary">Guardar 🗃️</button>
+                        <button type="button" class="btn btn-danger" onclick="eliminarProducto()">🗑️</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contenido de productos -->
+        <div class="content" id="productos" style="display: none;">
+            <h1>Gestión de Productos</h1>
+            <div class="productos-header">
+                <button onclick="mostrarFormularioProducto()" class="btn-primary">
+                    <i class="fas fa-plus"></i> Agregar Nuevo Producto
+                </button>
+            </div>
+            
+            <!-- Tabla de productos -->
+            <div class="tabla-container">
+                <table class="tabla-productos">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaProductos">
+                        <!-- Aquí se cargarán los productos dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contenido de catálogo -->
+        <div class="content" id="catalogo" style="display: none;">
+            <h1>Gestión de Catálogo</h1>
+            
+            <!-- Controles de filtrado -->
+            <div class="catalogo-controls">
+                <select id="filtroCategoria">
+                    <option value="">Todos los productos</option>
+                    <option value="internet">Internet</option>
+                    <option value="telefonia">Telefonía</option>
+                    <option value="television">Televisión</option>
+                </select>
+                <button onclick="filtrarCatalogo()" class="btn-primary">
+                    Aplicar filtro
+                </button>
+            </div>
+
+            <!-- Grid de productos en catálogo -->
+            <div id="listaCatalogo" class="catalogo-grid"></div>
+        </div>
+
+        <!-- Contenido de servicios -->
+        <div class="content" id="servicios" style="display: none;">
+            <h1>Servicios/Clientes</h1>
+            <div class="servicios-tabs">
+                <button onclick="mostrarServiciosTab('activos')" class="btn-primary">Servicios Activos</button>
+                <button onclick="mostrarServiciosTab('pendientes')" class="btn-secondary">Pendientes</button>
+            </div>
+            <div id="listaServicios"></div> 
+        </div>
+    </div>
+
+    <script src="usuario.js" defer></script>
+</body>
+</html>

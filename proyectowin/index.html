@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tienda Online</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+    <header>
+        <a href="/">
+            <img src="https://win.pe/img/logo-oct-white.png" alt="WIN" class="header-logo">
+        </a>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='opiniones.html'" class="opinions-icon">
+                ⭐ Opiniones
+            </button>
+            <div id="cartIcon" class="cart-icon" onclick="openModal('cartModal')">
+                🛒 <span class="cart-count">0</span>
+            </div>
+            <div class="user-menu">
+                <img src="data:image/webp;base64,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" alt="Usuario" class="user-icon" onclick="toggleUser()">
+                <div class="user-dropdown" id="userDropdown" style="display: none;">
+                    <a href="cliente.html">Mi Perfil</a>
+                    <a href="#" onclick="cerrarSesion()">Cerrar Sesión</a>
+                </div>
+            </div>        </div>
+    </header>
+
+    <div class="main-container">
+        <div id="successAlert" class="alert alert-success" style="display: none;"></div>
+        <div id="errorAlert" class="alert alert-danger" style="display: none;"></div>
+        <div id="productsGrid" class="products-grid">
+
+            <!-- Los productos se cargarán dinámicamente -->
+        </div>
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div id="cartModal" class="cart-modal">
+        <span id="closeCart" class="close-btn" onclick="closeModal('cartModal')">✖</span>
+        <h2>Carrito de Compras</h2>
+        <div id="cartItems"></div>
+        <div id="cartTotal"></div>
+        <button onclick="openModal('paymentModal')" class="checkout-btn">Proceder al Pago</button>
+    </div>
+
+    <!-- Modal de Pago -->
+<div id="paymentModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('paymentModal')">&times;</span>
+        <div class="payment-header">
+            <h2>Método de Pago</h2>
+        </div>
+        <!-- Agregar form tag y prevenir envío por defecto -->
+        <form id="paymentForm" onsubmit="procesarPago(event)">
+            <div class="form-group">
+                <label>Seleccione su método de pago:</label>
+                <select id="paymentMethod" onchange="toggleCardDetails()">
+                    <option value="credit">Tarjeta de Crédito</option>
+                    <option value="debit">Tarjeta de Débito</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <div id="cardDetails">
+                <div class="form-group">
+                    <input type="text" id="cardHolder" placeholder="Titular de la tarjeta" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" 
+                        id="cardNumber" 
+                        placeholder="Numero de tarjeta" 
+                        maxlength="19" 
+                        autocomplete="cc-number"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="expDate" placeholder="MM/YY" 
+                           maxlength="5" pattern="\d{2}/\d{2}" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="cvv" placeholder="CVV" 
+                           maxlength="3" pattern="\d{3}" required>
+                </div>
+            </div>
+            <!-- Cambiar el botón a type="submit" -->
+            <button type="submit" id="payButton">Confirmar Pago</button>
+        </form>
+    </div>
+</div>
+
+    <!-- Modal de Boleta Electrónica -->
+    <div id="boletaModal" class="modal">
+        <div class="modal-content boleta-container">
+            <span class="close" onclick="closeModal('boletaModal')">&times;</span>
+            <div id="boletaContent" class="boleta-content">
+                <div class="boleta-header">
+                    <h2>Boleta Electrónica</h2>
+                    <button onclick="imprimirBoleta()" class="print-btn">🖨️ Imprimir</button>
+                </div>
+                
+                <div class="empresa-info">
+                    <h3>WIN Internet Hogar</h3>
+                    <p>RUC: 20123456789</p>
+                    <p>Dirección: Av. América Norte 1245, Urb. Los Jardines - Trujillo</p>
+                    <p>Teléfono: 017073000</p>
+                </div>
+                
+                <div class="boleta-details">
+                    <div class="boleta-info">
+                        <p><strong>Nº Boleta:</strong> <span id="boletaNumber"></span></p>
+                        <p><strong>Fecha:</strong> <span id="boletaFecha"></span></p>
+                        <p><strong>Hora:</strong> <span id="boletaHora"></span></p>
+                    </div>
+                    <div class="customer-info">
+                        <p><strong>Cliente:</strong> <span id="customerName"></span></p>
+                        <p><strong>Email:</strong> <span id="customerEmail"></span></p>
+                    </div>
+                </div>
+
+                <div class="items-container">
+                    <h3>Detalle de Compra</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio Unit.</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody id="boletaItems">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="totals">
+                    <p><strong>Subtotal:</strong> <span id="boletaSubtotal"></span></p>
+                    <p><strong>IGV (18%):</strong> <span id="boletaIGV"></span></p>
+                    <p class="total"><strong>Total:</strong> <span id="boletaTotal"></span></p>
+                </div>
+
+                <div class="boleta-footer">
+                    <p>Gracias por su compra</p>
+                    <p>Esta boleta se genera electrónicamente</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-icon" onclick="toggleChat()">
+            💬
+        </div>
+        
+        <div class="chatbot-box" id="chatBox" style="display: none;">
+            <div class="chatbot-header">
+                <span>Asistente WIN</span>
+                <span class="close-chat" onclick="toggleChat()">×</span>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Escribe tu mensaje..." onkeypress="handleKeyPress(event)">
+                <button onclick="sendMessage()">↑</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Opiniones -->
+    <div id="opinionsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('opinionsModal')">&times;</span>
+            <h2>Opiniones de Nuestros Clientes</h2>
+            <div class="testimonials-container" id="testimonialsList">
+                <!-- Las calificaciones se cargarán dinámicamente aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script src="funcionalidad.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

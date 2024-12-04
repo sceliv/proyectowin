@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WIN: 100% Fibra Óptica | El Internet Hogar más rápido</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Previene cualquier scroll */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: #ff741e;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .header-logo {
+            height: 40px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+        }
+
+        .banner-container {
+            flex: 1;
+            margin-top: 70px;
+            position: relative;
+            height: calc(100vh - 70px);
+        }
+
+        .banner-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            width: 100%;
+            padding: 1rem;
+            z-index: 2;
+        }
+
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+                height: 60px;
+            }
+
+            .header-logo {
+                height: 30px;
+            }
+
+            .banner-container {
+                margin-top: 60px;
+                height: calc(100vh - 60px);
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
+                margin: 0 1rem;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #ff741ee1;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+            color: white;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .password-recovery-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: white;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        hr {
+            margin: 1.5rem 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .signup-text {
+            text-align: center;
+        }
+
+        .signup-text p {
+            margin: 0.5rem 0;
+            color: white;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        /* Alert styles */
+        .alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 4px;
+            color: white;
+            z-index: 3000;
+            display: none;
+        }
+
+        .alert.success {
+            background-color: #28a745;
+        }
+
+        .alert.error {
+            background-color: #dc3545;
+        }
+
+        .register-header,
+        .password-recovery-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .register-header img,
+        .password-recovery-header img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+        }
+
+        #successMessage {
+            text-align: center;
+            color: #28a745;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Ajustes generales para todos los modales */
+        .modal button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s;
+        }
+
+        .modal button:hover {
+            background-color: white;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal h2 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/">
+            <img src="https://win.pe/img/logo-oct-white.png" alt="WIN" class="header-logo">
+        </a>
+        <div class="nav-buttons">
+            <button onclick="openModal('loginModal')">Iniciar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="banner-container">
+        <img src="https://win.pe/img/winhogar/banner.JPG" alt="Banner" class="banner-image">
+    </div>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <div class="login-header">
+                <img src="https://sede.seg-social.gob.es/SedeThemeStatic/themes/Portal8.5/images/sede_img/usuario_r.png" class="login-logo">
+                <h2>Iniciar Sesión</h2>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email" id="loginEmail">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Contraseña" id="loginPassword">
+                <div class="d-flex">
+                    <div class="form-check">
+                        <input type="checkbox" id="rememberMe">
+                        <label for="rememberMe">Recordarme</label>
+                    </div>
+                    <a href="javascript:void(0)" onclick="openModal('passwordRecoveryModal')" class="password-recovery-link">Recuperar contraseña</a>
+                </div>
+            </div>
+            <button onclick="login()" class="login-button">Iniciar</button>
+            <hr>
+            <div class="signup-text">
+                <p>¿Aún no tienes cuenta?</p>
+                <p>Regístrate ahora</p>
+                <button class="btn-register" onclick="redirectToRegister()">Registrarme</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('registerModal')">&times;</span>
+            <div class="register-header">
+                <img src="https://sede.seg-social.gob.es/SedeThemeStatic/themes/Portal8.5/images/sede_img/usuario_r.png" class="login-logo">
+                <h2>Registrarse</h2>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Nombre" id="registerName">
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email" id="registerEmail">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Contraseña" id="registerPassword">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Confirmar Contraseña" id="registerConfirmPassword">
+            </div>
+            <button onclick="register()">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Modal de Recuperación de Contraseña -->
+    <div id="passwordRecoveryModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('passwordRecoveryModal')">&times;</span>
+            <div class="password-recovery-header">
+                <h2>Recuperar Contraseña</h2>
+            </div>
+            <div id="recoveryForm" class="form-group">
+                <input type="email" placeholder="Introduce tu correo" id="recoveryEmail">
+            </div>
+            <button onclick="recoverPassword()">Recuperar</button>
+            <div id="successMessage" class="form-group" style="display: none;">
+                <p>¡Correo enviado exitosamente!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert container -->
+    <div id="alert" class="alert"></div>
+
+    <script>
+        // Variables globales
+        let currentUser = null;
+
+        // Funciones de modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Función de alerta
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type}`;
+            alert.style.display = 'block';
+
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+
+        // Funciones de autenticación
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                showAlert('Por favor complete todos los campos', 'error');
+                return;
+            }
+
+            console.log('Enviando datos:', { email, password });
+
+            fetch('auth/login.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => {
+                console.log('Estado de respuesta:', response.status);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Respuesta del servidor:', data);
+                
+                if (data.success) {
+                    sessionStorage.setItem('userEmail', data.user.email);
+                    sessionStorage.setItem('userName', data.user.name);
+                    sessionStorage.setItem('userId', data.user.id);
+                    
+                    showAlert('Inicio de sesión exitoso', 'success');
+                    
+                    // Verificar si es la cuenta de administrador
+                    if (data.user.email === 'admin@gmail.com') {
+                        setTimeout(() => {
+                            window.location.href = 'usuario.html';
+                        }, 1000);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1000);
+                    }
+                } else {
+                    showAlert(data.message || 'Error en el inicio de sesión', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Error detallado:', error);
+                showAlert('Error en el servidor', 'error');
+            });
+        }
+
+        function redirectToRegister() {
+            // Aquí puedes redirigir a la página de registro
+            showAlert('Redirigiendo a registro...', 'success');
+        }
+
+        // Cerrar modal cuando se hace clic fuera de él
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
+
+        function register() {
+            const name = document.getElementById('registerName').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                showAlert('Por favor complete todos los campos', 'error');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showAlert('Las contraseñas no coinciden', 'error');
+                return;
+            }
+
+            fetch('auth/register.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showAlert('Registro exitoso', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 1000);
+                } else {
+                    showAlert(data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showAlert('Error en el servidor', 'error');
+            });
+        }
+
+        // Función para recuperar contraseña
+        function recoverPassword() {
+            const email = document.getElementById('recoveryEmail').value;
+
+            if (!email) {
+                showAlert('Por favor ingrese su correo electrónico', 'error');
+                return;
+            }
+
+            // Aquí iría la lógica de recuperación de contraseña
+            document.getElementById('recoveryForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            setTimeout(() => {
+                closeModal('passwordRecoveryModal');
+                document.getElementById('recoveryForm').style.display = 'block';
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        }
+
+        // Función para redirección a registro
+        function redirectToRegister() {
+            closeModal('loginModal');
+            openModal('registerModal');
+        }
+    </script>
+
+</body>
+</html>
+
+
+
